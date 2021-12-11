@@ -3,13 +3,17 @@ extends Node
 
 signal transitioned(from_state, to_state)
 
+export var _debug: bool
 export var _initial_state: NodePath
 
 var _state
-
+var _state_machine_debug_label: Label
 
 func _ready():
 	assert(!_initial_state.is_empty(), "%s _intitial_state must be set" % owner.name)
+
+	owner.get_node("StateMachineDebug").visible = _debug
+	_state_machine_debug_label = owner.get_node("StateMachineDebug/Label")
 
 	_state = get_node(_initial_state)
 	_state.enter()
@@ -47,3 +51,5 @@ func _on_StateMachine_transitioned(from_state, to_state):
 		print("%s transitioned to %s" % [owner.name, to_state.name])
 	else:
 		print("%s transitioned from %s to %s" % [owner.name, from_state.name, to_state.name])
+
+	_state_machine_debug_label.text = to_state.name

@@ -6,6 +6,7 @@
 [node name="Player" instance=ExtResource( 1 )]
 
 [node name="StateMachine" parent="." index="0"]
+_debug = true
 _initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" index="0"]
