@@ -5,7 +5,7 @@ signal transitioned(from_state, to_state)
 
 export var _initial_state: NodePath
 
-var _state: State
+var _state
 
 
 func _ready():
@@ -29,12 +29,12 @@ func _unhandled_input(event):
 
 
 func _transition_to(state_path: String):
-	var state: State = get_node(state_path)
+	var state = get_node(state_path)
 
 	if state == null:
 		return print("%s state does not exist (%s)" % [owner.name, state_path])
 
-	var from_state: State = _state
+	var from_state = _state
 	_state.exit()
 	_state = state
 	_state.enter()
@@ -42,7 +42,7 @@ func _transition_to(state_path: String):
 	emit_signal("transitioned", from_state, _state)
 
 
-func _on_StateMachine_transitioned(from_state: State, to_state: State):
+func _on_StateMachine_transitioned(from_state, to_state):
 	if from_state == null:
 		print("%s transitioned to %s" % [owner.name, to_state.name])
 	else:
