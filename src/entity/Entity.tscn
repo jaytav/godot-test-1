@@ -8,6 +8,8 @@
 [node name="StateMachine" type="Node" parent="." groups=["state_machine"]]
 script = ExtResource( 2 )
 
+[node name="Stats" type="Node" parent="."]
+
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
 texture = ExtResource( 1 )
