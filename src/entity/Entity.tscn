@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/textures/entity.png" type="Texture" id=1]
 [ext_resource path="res://src/entity/state_machine/state_machine.gd" type="Script" id=2]
+[ext_resource path="res://src/entity/entity.gd" type="Script" id=3]
 
 [node name="Entity" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="StateMachine" type="Node" parent="." groups=["state_machine"]]
 script = ExtResource( 2 )
@@ -44,4 +46,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="end_turn" from="." to="." method="_on_Entity_end_turn"]
+[connection signal="start_turn" from="." to="." method="_on_Entity_start_turn"]
 [connection signal="transitioned" from="StateMachine" to="StateMachine" method="_on_StateMachine_transitioned"]

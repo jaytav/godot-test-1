@@ -32,7 +32,7 @@ func _unhandled_input(event):
 	_state.unhandled_input(event)
 
 
-func _transition_to(state_path: String):
+func transition_to(state_path: String):
 	var state = get_node(state_path)
 
 	if state == null:
